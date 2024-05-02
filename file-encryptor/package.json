@@ -1,0 +1,14 @@
+{
+  "name": "file-encryptor",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "consola": "^3.2.3"
+  }
+}
