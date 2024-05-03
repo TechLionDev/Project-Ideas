@@ -2,10 +2,15 @@
 import { FormEvent } from "react";
 import { useState } from "react";
 
+type ShortenedUrl = {
+  longURL: string,
+  slug:      string
+};
+
 const Page = () => {
   const [inputUrl, setInputUrl] = useState<string>("");
   const [inputUrlValid, setInputUrlValid] = useState<boolean>(false);
-  const [shortUrl, setShortUrl] = useState("");
+  const [shortUrl, setShortUrl] = useState<ShortenedUrl>();
   function check(value: string): void {
     setInputUrl(value);
     const urlRegex = new RegExp(
@@ -70,7 +75,6 @@ const Page = () => {
               <a href={shortUrl.slug} className="text-blue-500 underline" target='_blank' rel='noreferrer'>
                 {(window.location.href.endsWith('/') ? window.location.href : window.location.href + '/') + shortUrl.slug}
               </a>
-              {/* create a copy button taht copies the current page url domain followed by slug */}
               <button
                 onClick={() => {
                   navigator.clipboard.writeText(
