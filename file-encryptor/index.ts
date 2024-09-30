@@ -61,6 +61,16 @@ function decryptFile(fileP: string) {
 }
 
 async function main() {
+    if (!fs.existsSync(CONFIG.INPUT)) {
+        fs.mkdirSync(CONFIG.INPUT)
+    }
+    if (!fs.existsSync(CONFIG.OUTPUT)) {
+        fs.mkdirSync(CONFIG.OUTPUT)
+    }
+    if (fs.readdirSync(CONFIG.INPUT).length === 0) {
+        await consola.error("Please place the files you would like to encrypt or decryptin the './in' folder before proceeding!");
+        return
+    }
     let choice = await consola.prompt("What Would You Like To Do? (encrypt/decrypt)",{
         type: "select",
         options: ["encrypt", "decrypt"],

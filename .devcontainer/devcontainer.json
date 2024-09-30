@@ -1,0 +1,26 @@
+{
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {
+		"ghcr.io/devcontainers/features/node:1": {
+			"nodeGypDependencies": true,
+			"installYarnUsingApt": true,
+			"version": "latest",
+			"pnpmVersion": "latest",
+			"nvmVersion": "latest"
+		},
+		"ghcr.io/shyim/devcontainers-features/bun:0": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"bradlc.vscode-tailwindcss",
+				"esbenp.prettier-vscode",
+				"heybourn.headwind",
+				"eamodio.gitlens",
+				"GitHub.copilot"
+			]
+		}
+	},
+    "postCreateCommand": "npm i -g commitizen && commitizen init cz-conventional-changelog --save-dev --save-exact"
+}
